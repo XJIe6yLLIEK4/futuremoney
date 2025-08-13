@@ -102,7 +102,7 @@ public class NumberTextWatcher implements TextWatcher {
     }
 
     public Double getValue() {
-        return value;
+        return value != null ? value : 0.0; // Return default value if null
     }
 
     public void setValue(Double value) {

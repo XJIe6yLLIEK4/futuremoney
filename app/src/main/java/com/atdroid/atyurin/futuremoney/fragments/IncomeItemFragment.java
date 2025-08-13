@@ -181,11 +181,13 @@ public class IncomeItemFragment extends Fragment {
                 Toast.makeText(getActivity().getBaseContext(), R.string.msg_budget_item_empty_name, Toast.LENGTH_LONG).show();
                 return false;
             }
-            income.setValue(ntw.getValue());
-            if (income.getValue() <= 0) {
-                Toast.makeText(getActivity().getBaseContext(), R.string.msg_budget_item_empty_amount, Toast.LENGTH_LONG).show();
+            Double v = (ntw != null && ntw.getValue() != null) ? ntw.getValue() : 0.0;
+            if (v <= 0.0) {
+                Toast.makeText(getActivity().getBaseContext(),
+                        R.string.msg_budget_item_empty_amount, Toast.LENGTH_LONG).show();
                 return false;
             }
+            income.setValue(v);
             if (income.getBegin_date().after(income.getEnd_date())) {
                 Toast.makeText(getActivity().getBaseContext(), R.string.msg_budget_item_wrong_dates, Toast.LENGTH_LONG).show();
                 return false;

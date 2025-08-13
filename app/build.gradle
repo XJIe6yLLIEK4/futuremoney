@@ -20,6 +20,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArguments += [ clearPackageData: "true" ]
     }
     buildTypes {
         release {
@@ -46,11 +47,27 @@ dependencies {
     implementation 'com.google.android.material:material:1.12.0'
     implementation 'joda-time:joda-time:2.10.1'
     implementation 'com.jjoe64:graphview:4.2.1'
+    implementation "androidx.tracing:tracing:1.1.0"
     testImplementation 'junit:junit:4.13.2'
 
+    androidTestImplementation "androidx.tracing:tracing:1.1.0"
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.6.1'
     androidTestImplementation 'androidx.test.espresso:espresso-intents:3.6.1'
     androidTestImplementation 'androidx.test.espresso.idling:idling-concurrent:3.6.1'
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.3.0'
+    androidTestImplementation "com.google.protobuf:protobuf-javalite:3.21.12"
+
+    androidTestImplementation 'com.kaspersky.android-components:kaspresso:1.5.3'
+    androidTestImplementation 'io.github.kakaocup:kakao:3.0.10'
+
+    androidTestImplementation 'androidx.test:runner:1.6.2'
+    androidTestImplementation 'androidx.test:rules:1.6.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+}
+
+configurations.all {
+    resolutionStrategy {
+        force "com.google.protobuf:protobuf-javalite:3.21.12"
+    }
 }
